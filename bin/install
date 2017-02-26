@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+source $(dirname $0)/dot_functions
+
+directory_warning
+
+for dotfile in $(./bin/file_list); do
+  dotfile_path="$PWD/$dotfile"
+  path="$HOME/$dotfile"
+
+  [ -e $dotfile_path ] || continue
+
+  if [ ! -L $path ]; then
+    link_notice $dotfile "absent"
+    ln -nfs $dotfile_path $path
+  else
+    skip_notice $dotfile "exists"
+  fi
+done
