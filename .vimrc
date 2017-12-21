@@ -23,6 +23,11 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'w0rp/ale'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'prettier/vim-prettier'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 call neobundle#end()
 filetype plugin indent on
@@ -47,3 +52,28 @@ if has('persistent_undo')
   set undofile
   set undodir=$HOME/.vim/undo
 endif
+
+let g:ale_pattern_options = {
+\   '.*dist/.*$': {'ale_enabled': 0},
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
+\}
+"let g:ale_fixers = {}
+"let g:ale_fixers['javascript'] = ['prettier']
+"let g:ale_fixers['typescript'] = ['prettier']
+"let g:ale_fixers['javascript.jsx'] = ['prettier']
+"let g:ale_fixers['typescript.tsx'] = ['prettier']
+"let g:ale_javascript_prettier_use_local_config = 1
+
+let g:ale_fix_on_save = 0
+let g:ale_completion_enabled = 1
+let g:ale_maximum_file_size = 300000
+
+map ta :ALEToggle<CR>
