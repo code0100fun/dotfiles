@@ -21,6 +21,7 @@ alias gra='git rebase --abort'
 alias gco='git checkout'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias vi='vim'
+alias nuse='nvm use default'
 
 # git reset empty files
 gref() {
@@ -32,4 +33,15 @@ gcr() {
 }
 
 source "$HOME/.prompt"
+source "$HOME/.cargo/env"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
+export DOCKER_HOST='tcp://0.0.0.0:2375'
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
