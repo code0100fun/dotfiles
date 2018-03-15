@@ -28,6 +28,7 @@ NeoBundle 'w0rp/ale'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'prettier/vim-prettier'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'elixir-editors/vim-elixir'
 
 call neobundle#end()
 filetype plugin indent on
