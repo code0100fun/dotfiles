@@ -33,3 +33,24 @@ gcr() {
 
 source "$HOME/.prompt"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export GIT_EDITOR="$VISUAL"
+
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=~/Projects/go
+export PATH=$PATH:$GOPATH/bin
+export PATH="$HOME/.cargo/bin:$PATH"
