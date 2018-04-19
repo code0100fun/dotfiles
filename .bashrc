@@ -19,6 +19,7 @@ alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gco='git checkout'
+alias gbs='git branch --sort=committerdate'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias vi='vim'
 
