@@ -1,6 +1,17 @@
 # dotfiles
 
-## Install
+## Full Install
+
+1. Install
+ ```
+ $ curl https://raw.githubusercontent.com/code0100fun/dotfiles/master/bin/install > install.sh
+ $ bash install.sh
+ ```
+2. Run vim and press press 'y' to install plugins
+
+3. Restart terminal
+
+## Install (only dotfiles)
 
 1. Clone this repo into ~/dotfiles
 

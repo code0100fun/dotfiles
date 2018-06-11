@@ -32,7 +32,7 @@ gcr() {
   git checkout -b $1 origin/$1
 }
 
-source "$HOME/.prompt"
+. "$HOME/.prompt"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"

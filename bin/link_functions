@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-source $(dirname $0)/dot_functions
+. $(dirname $0)/dot_functions
 
 directory_warning
 

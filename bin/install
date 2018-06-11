@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+set -e
+
+sudo apt-get update
+sudo apt-get -y install git tmux vim \
+    autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev \
+    zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev \
+    libpq-dev automake libcurl4-gnutls-dev unzip
+
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+echo 'Generating new SSH Keys'
+cat /dev/zero | ssh-keygen -q -N "" -t rsa -b 4096 -C "chase@code0100fun.com"
+fi
+
+echo '=== BEGIN Public Key ==='
+cat ~/.ssh/id_rsa.pub
+echo '=== END Public Key ==='
+
+echo -n "Add the key above to your github SSH Keys and press [ENTER]: "
+read _
+
+echo 'github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' >> ~/.ssh/known_hosts
+
+if [ ! -d ~/dotfiles ] ; then
+git clone https://github.com/code0100fun/dotfiles.git ~/dotfiles
+fi
+
+cd ~/dotfiles; ./bin/link_functions; cd -;
+
+if [ ! -d ~/.rbenv ] ; then
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+fi
+if [ ! -d ~/.rbenv/plugins/ruby-build ] ; then
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+fi
+
+if [ ! -d ~/.pyenv ] ; then
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+fi
+if [ ! -d ~/.pyenv/plugins/pyenv-virtualenv ] ; then
+git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+fi
+
+if [ ! -d ~/.asdf ] ; then
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.0
+fi
+
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > neobundle_install.sh
+sh neobundle_install.sh
+
+. ~/.bashrc
+
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git | tee
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git | tee
+
+mkdir -p ~/.nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+# ---------------
+# https://gist.github.com/dweldon/39ca0536168a92815a56df44eb55a337
+
+# https://docs.docker.com/install/linux/docker-ce/ubuntu/
+sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+sudo apt-get update
+sudo apt-get install -y docker-ce
+
+# https://docs.docker.com/compose/install/
+sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# https://docs.docker.com/install/linux/linux-postinstall/
+if ! grep --quiet docker /etc/group ; then
+sudo groupadd docker
+fi
+
+if ! id -Gn $USER | grep --quiet '\bdocker\b' ; then
+sudo usermod -a -G docker $USER
+fi
+
+echo "Done. Logout and re-login to finish adding user to docker group."
