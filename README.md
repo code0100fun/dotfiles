@@ -12,13 +12,13 @@
 
  ```
  $ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
- $ sh ./install.sh
+ $ sh install.sh
  ```
-3. Run install script
+3. Link functions
 
  ```
  $ cd ~/dotfiles
- $ ./bin/install
+ $ ./bin/link_functions
  ```
 
 4. Run vim and press press 'y' to install plugins
