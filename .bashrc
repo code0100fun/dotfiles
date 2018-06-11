@@ -53,6 +53,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=~/Projects/go
+export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/.cargo/bin:$PATH"
