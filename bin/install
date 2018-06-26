@@ -5,7 +5,8 @@ sudo apt-get update
 sudo apt-get -y install git tmux vim \
     autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev \
     zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev \
-    libpq-dev automake libcurl4-gnutls-dev unzip
+    libpq-dev automake libcurl4-gnutls-dev unzip \
+    xsltproc fop
 
 if [ ! -f ~/.ssh/id_rsa.pub ]; then
 echo 'Generating new SSH Keys'
