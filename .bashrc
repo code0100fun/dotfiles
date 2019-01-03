@@ -56,3 +56,23 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# Android
+export ANDROID_SDK_ROOT=/home/code0100fun/Android/Sdk
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+export JAVA_HOME=$(update-alternatives --query javac | sed -n -e 's/Best: *\(.*\)\/bin\/javac/\1/p')
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# ESP-IDF
+export XTENSA_PATH="$HOME/Projects/esp32/xtensa-esp32-elf"
+export OPENOCD_ESP32_PATH="$HOME/Projects/esp32/openocd-esp32"
+export PATH="$XTENSA_PATH/bin:$PATH"
+export IDF_PATH=/home/code0100fun/Projects/esp32/esp-idf
+
+###-tns-completion-start-###
+if [ -f /home/code0100fun/.tnsrc ]; then 
+    source /home/code0100fun/.tnsrc 
+fi
+###-tns-completion-end-###
