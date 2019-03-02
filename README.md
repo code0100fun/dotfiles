@@ -1,37 +1,35 @@
 # dotfiles
 
-## Full Install
+Uses [Dotbot](https://github.com/anishathalye/dotbot) manager to symlink dotfiles.
 
-1. Install
- ```
- $ curl https://raw.githubusercontent.com/code0100fun/dotfiles/master/bin/install > install.sh
- $ bash install.sh
- ```
-2. Run vim and press press 'y' to install plugins
+Installs:
 
-3. Restart terminal
+* asdf
+* asdf-erlang
+* asdf-elixir
+* tmux
+* tmux plugin manager
+* vim
+* Neobundle
+* docker
+* docker-compose
 
-## Install (only dotfiles)
+## Install
 
-1. Clone this repo into ~/dotfiles
+1. Clone this repo:
 
  ```
  $ git clone git@github.com:code0100fun/dotfiles.git ~/dotfiles
  ```
 
-2. Install [NeoBundle](https://github.com/Shougo/neobundle.vim)
-
+2. Run install script:
  ```
- $ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
- $ sh install.sh
- ```
-3. Link functions
-
- ```
- $ cd ~/dotfiles
- $ ./bin/link_functions
+ $ cd dotfiles
+ $ ./install
  ```
 
-4. Run vim and press press 'y' to install plugins
+3. Provide email address if SSH key is generated
 
-5. Restart terminal
+4. Add public SSH key to GitHub
+
+5. Logout and log back in if docker was installed
