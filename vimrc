@@ -1,40 +1,33 @@
-"NeoBundle Scripts-----------------------------
+"Vim-plug Scripts-----------------------------
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-" Note: Skip initialization for vim-tiny or vim-small.
-if 0 | endif
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'vim-scripts/bufkill.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-eunuch'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'w0rp/ale'
+Plug 'leafgarland/typescript-vim'
+Plug 'prettier/vim-prettier'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'tpope/vim-obsession'
 
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('$HOME/.vim/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Initialize plugin system
+call plug#end()
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'vim-scripts/bufexplorer.zip'
-NeoBundle 'vim-scripts/bufkill.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'w0rp/ale'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'prettier/vim-prettier'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'elixir-editors/vim-elixir'
-NeoBundle 'tpope/vim-obsession'
-
-call neobundle#end()
-filetype plugin indent on
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+"End Vim-plug Scripts-------------------------
 
 syntax on
 filetype plugin indent on
