@@ -23,6 +23,7 @@ Plug 'prettier/vim-prettier'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'tpope/vim-obsession'
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 " Initialize plugin system
 call plug#end()
@@ -72,3 +73,6 @@ let g:ale_completion_enabled = 1
 let g:ale_maximum_file_size = 300000
 
 map ta :ALEToggle<CR>
+
+"allow comments in JSON docs (needed by coc.nvim)
+autocmd FileType json syntax match Comment +\/\/.\+$+
