@@ -35,19 +35,12 @@ if [ ! -d ~/.rbenv/plugins/ruby-build ] ; then
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 fi
 
-if [ ! -d ~/.pyenv ] ; then
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-fi
-if [ ! -d ~/.pyenv/plugins/pyenv-virtualenv ] ; then
-git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-fi
-
 if [ ! -d ~/.tmux/plugins/tpm ] ; then
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ ! -d ~/.asdf ] ; then
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.0
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.2
 fi
 
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > neobundle_install.sh
@@ -59,7 +52,7 @@ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git | tee
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git | tee
 
 mkdir -p ~/.nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
 # ---------------
 # https://gist.github.com/dweldon/39ca0536168a92815a56df44eb55a337
@@ -67,12 +60,12 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 # https://docs.docker.com/install/linux/docker-ce/ubuntu/
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce
 
 # https://docs.docker.com/compose/install/
-sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 # https://docs.docker.com/install/linux/linux-postinstall/

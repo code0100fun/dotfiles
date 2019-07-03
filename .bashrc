@@ -48,31 +48,38 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export GIT_EDITOR="$VISUAL"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+###-tns-completion-start-###
+if [ -f /home/code0100fun/.tnsrc ]; then
+    source /home/code0100fun/.tnsrc
+fi
+###-tns-completion-end-###
+
+# Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# Android
-export ANDROID_SDK_ROOT=/home/code0100fun/Android/Sdk
-export ANDROID_HOME=$ANDROID_SDK_ROOT
-export JAVA_HOME=$(update-alternatives --query javac | sed -n -e 's/Best: *\(.*\)\/bin\/javac/\1/p')
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # ESP-IDF
-export XTENSA_PATH="$HOME/Projects/esp32/xtensa-esp32-elf"
-export OPENOCD_ESP32_PATH="$HOME/Projects/esp32/openocd-esp32"
+export XTENSA_PATH="$HOME/source/esp32/xtensa-esp32-elf"
+export OPENOCD_ESP32_PATH="$HOME/source/esp32/openocd-esp32"
 export PATH="$XTENSA_PATH/bin:$PATH"
-export IDF_PATH=/home/code0100fun/Projects/esp32/esp-idf
+export IDF_PATH=$HOME/source/esp32/esp-idf
 
-###-tns-completion-start-###
-if [ -f /home/code0100fun/.tnsrc ]; then 
-    source /home/code0100fun/.tnsrc 
-fi
-###-tns-completion-end-###
+# Android
+export ANDROID_HOME="/home/code0100fun/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+
+# Java
+export JAVA_HOME="/usr/lib/jvm/jdk1.8.0_211"
+#export JAVA_HOME="/usr/local/android-studio/jre"
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Flutter
+export PATH="$PATH:$HOME/.local/lib/flutter/bin"
+
+# Dart
+export PATH="$PATH:/usr/lib/dart/bin"
+
+# pub
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
