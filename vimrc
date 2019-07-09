@@ -1,3 +1,15 @@
+function! CocSetup(info)
+  " Initial setup
+  call coc#util#install()
+
+  " Install extensions on installation, update otherwise
+  if a:info.status == 'installed' || a:info.force
+    call coc#add_extension('coc-css', 'coc-emoji', 'coc-highlight', 'coc-html', 'coc-json', 'coc-prettier', 'coc-eslint', 'coc-stylelint', 'coc-tslint-plugin', 'coc-tsserver', 'coc-ultisnips', 'coc-yaml')
+  else
+    execute 'CocUpdateSync'
+  endif
+endfunction
+
 "Vim-plug Scripts-----------------------------
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
@@ -23,12 +35,27 @@ Plug 'prettier/vim-prettier'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'tpope/vim-obsession'
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+Plug 'neoclide/coc.nvim', {'do': function('CocSetup')}
 
 " Initialize plugin system
 call plug#end()
 
 "End Vim-plug Scripts-------------------------
+
+" make vim's completion like vs code
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-y>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" let g:coc_snippet_next = '<Tab>'
+" let g:coc_snippet_prev = '<S-Tab>'
 
 syntax on
 filetype plugin indent on
