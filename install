@@ -13,3 +13,17 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+
+# powerline fonts for zsh agnoster theme
+git clone https://github.com/powerline/fonts.git
+cd fonts
+./install.sh
+cd .. && rm -rf fonts
+ 
+export BIN_DIR="$HOME/.local/bin"
+
+# starship install
+curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+
+# oh-my-zsh install
+curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --keep-zshrc

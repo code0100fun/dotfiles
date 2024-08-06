@@ -1,12 +1,13 @@
 - defaults:
-    link:
-      relink: true
+      link:
+          create: true
+          relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
-    ~/.bashrc: bashrc
-    ~/.bash_aliases: bash_aliases
+      ~/.zshrc:
+          force: true
 
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
+- create:
+      - ~/.local/bin
