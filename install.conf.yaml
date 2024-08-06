@@ -1,12 +1,12 @@
+- defaults:
+    link:
+      relink: true
+
 - clean: ['~']
 
 - link:
-    ~/.prompt: prompt
-    ~/.profile: profile
     ~/.bashrc: bashrc
     ~/.bash_aliases: bash_aliases
-    ~/.bash_logout: bash_logout
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
 
-
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
