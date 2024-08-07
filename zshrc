@@ -3,6 +3,8 @@ if [[ -d ~/.local/bin ]];then
     export PATH=~/.local/bin:$PATH
 fi
 
+alias ls="exa"
+
 # load starship prompt
 eval "$(starship init zsh)"
 
