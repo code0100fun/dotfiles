@@ -9,5 +9,10 @@
       ~/.zshrc:
           force: true
 
+      ~/.config/:
+          glob: true
+          path: config/*
+          relink: true
+
 - create:
       - ~/.local/bin
