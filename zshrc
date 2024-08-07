@@ -8,6 +8,9 @@ alias ls="exa"
 # load starship prompt
 eval "$(starship init zsh)"
 
+# load homebrew
+eval $(~/.linuxbrew/bin/brew shellenv)
+
 ##############################################################################
 # plugins
 ##############################################################################
