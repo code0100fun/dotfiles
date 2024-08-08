@@ -5,11 +5,14 @@ fi
 
 alias ls="exa"
 
+# ctrl + space to accept autosuggestgs
+bindkey '^ ' autosuggest-accept
+
 # load starship prompt
 eval "$(starship init zsh)"
 
 # load homebrew
-eval $(~/.linuxbrew/bin/brew shellenv)
+# eval $(~/.linuxbrew/bin/brew shellenv)
 
 ##############################################################################
 # plugins
